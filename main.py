@@ -209,6 +209,9 @@ async def broadcast_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         try:
             await context.bot.send_message(chat_id=chat_id, text=text)
             success += 1
+
+            await asyncio.sleep(0.05)
+            
         except Forbidden:
             remove_user(chat_id)
             removed += 1
@@ -260,6 +263,9 @@ async def broadcastphoto_command(update: Update, context: ContextTypes.DEFAULT_T
                 caption=caption if caption else None
             )
             success += 1
+
+            await asyncio.sleep(0.05)
+            
         except Forbidden:
             remove_user(chat_id)
             removed += 1
