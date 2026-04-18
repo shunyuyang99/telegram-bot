@@ -8,6 +8,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Bot is running!")
 
 def main():
+    if not TOKEN:
+        raise ValueError("BOT_TOKEN is missing")
+
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
 
