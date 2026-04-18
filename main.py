@@ -134,11 +134,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         "🎉 Welcome!\n\n"
-        "You have successfully subscribed to this bot.\n"
-        "Available commands:\n"
-        "/bonus\n"
-        "/rain\n"
-        "/gametips"
+        "Welcome To ACE88!"
+        "You have successfully subscribed to our updates.\n\n"
+        "Stay tuned for the latest promotions and announcements!"
     )
 
 
@@ -149,34 +147,6 @@ async def users_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     total = get_total_users()
     await update.message.reply_text(f"Total subscribed users: {total}")
-
-
-async def bonus_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    text = """
-🔥 **ACE88 HOT BONUS TODAY** 🔥
-
-🎁 DAILY SLOT ROLLOVER REBATE 2%
-🎁 Daily Free Credit $8.88
-🎁 Daily Win Loss Rebate 8%
-🎁 Birthday Bonus Up To SGD8,888
-
-⚡ Fast Deposit & Withdrawal
-⚡ Singapore Trusted Platform
-
-👇 CLAIM NOW 👇
-🌐 https://ace88sg.com
-"""
-
-    await update.message.reply_text(text, parse_mode="Markdown")
-
-
-async def rain_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(get_content(CONTENT_RAIN))
-
-
-async def gametips_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(get_content(CONTENT_TIPS))
 
 
 async def setbonus_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -327,14 +297,6 @@ def main():
     app.add_handler(CommandHandler("users", users_command))
     app.add_handler(CommandHandler("broadcast", broadcast_command))
     app.add_handler(CommandHandler("broadcastphoto", broadcastphoto_command))
-
-    app.add_handler(CommandHandler("bonus", bonus_command))
-    app.add_handler(CommandHandler("rain", rain_command))
-    app.add_handler(CommandHandler("gametips", gametips_command))
-
-    app.add_handler(CommandHandler("setbonus", setbonus_command))
-    app.add_handler(CommandHandler("setrain", setrain_command))
-    app.add_handler(CommandHandler("settips", settips_command))
 
     print("Bot running...")
     app.run_polling(drop_pending_updates=True)
