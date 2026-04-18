@@ -152,7 +152,23 @@ async def users_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def bonus_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(get_content(CONTENT_BONUS))
+
+    text = """
+🔥 **ACE88 HOT BONUS TODAY** 🔥
+
+🎁 DAILY SLOT ROLLOVER REBATE 2%
+🎁 Daily Free Credit $8.88
+🎁 Daily Win Loss Rebate 8%
+🎁 Birthday Bonus Up To SGD8,888
+
+⚡ Fast Deposit & Withdrawal
+⚡ Singapore Trusted Platform
+
+👇 CLAIM NOW 👇
+🌐 https://ace88sg.com
+"""
+
+    await update.message.reply_text(text, parse_mode="Markdown")
 
 
 async def rain_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
