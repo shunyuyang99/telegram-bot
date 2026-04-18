@@ -133,8 +133,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
     await update.message.reply_text(
-        "🎉 Welcome!\n\n"
-        "Welcome To ACE88!"
+        "🎉 Welcome To ACE88!!\n\n"
         "You have successfully subscribed to our updates.\n\n"
         "Stay tuned for the latest promotions and announcements!"
     )
