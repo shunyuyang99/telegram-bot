@@ -5,6 +5,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 TOKEN = os.environ.get("BOT_TOKEN")
 DATABASE_URL = os.environ.get("DATABASE_URL")
+ADMIN_ID = int(os.environ.get("ADMIN_ID"))
 
 def get_connection():
     return psycopg.connect(DATABASE_URL)
@@ -70,6 +71,11 @@ async def users_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(f"Total users: {total}")
 
 async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    if update.effective_user.id != ADMIN_ID:
+        await update.message.reply_text("You are not allowed to use this command.")
+        return
+        
     message = " ".join(context.args)
 
     if not message:
