@@ -1,5 +1,5 @@
 import os
-import psycopg2
+import psycopg
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
@@ -7,7 +7,7 @@ TOKEN = os.environ.get("BOT_TOKEN")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 def get_connection():
-    return psycopg2.connect(DATABASE_URL)
+    return psycopg.connect(DATABASE_URL)
 
 def init_db():
     conn = get_connection()
@@ -84,7 +84,7 @@ async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
         try:
             await context.bot.send_message(chat_id=user_id, text=message)
             success += 1
-        except:
+        except Exception:
             failed += 1
 
     await update.message.reply_text(
